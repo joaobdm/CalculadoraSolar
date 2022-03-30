@@ -1,7 +1,7 @@
 class Consumo{
     constructor (potenciaPlaca, consumoMesAnterior, numeroPlacas) {
         this.tarifaKWh = 0.92065
-        this.incidenciaSolar = 5.3
+        this.incidenciaSolar = 12
         this.potenciaPlaca = potenciaPlaca
         this.consumoMesAnterior = consumoMesAnterior
         this.numeroPlacas = numeroPlacas
