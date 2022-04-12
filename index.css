@@ -1,0 +1,37 @@
+
+
+h1{
+    font-size: 38px;
+    font-style: Optima;
+    color: 	#228B22;
+    text-align: center;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+h2{
+    font-size: 18px;
+    font-style: Optima;
+    color: #363636;
+    text-align: height;
+    margin-left: 20px;
+    margin-left: 15%;
+    margin-right: 15%;
+
+}
+.func{
+    font-size: 18px;
+    font-style: Optima;
+    color: #363636;
+    display: inline-block;
+    margin-left: 20px;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+.video{
+    margin-left: 500px;
+    width: 500px;
+    height: 400px;
+    display: inline-block;
+}
+

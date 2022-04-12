@@ -12,7 +12,7 @@ const api = axios.create({
 const lat = 'lat=-19.56398'
 const lng = 'lng=-43.56290'
 let dt = ''
-//dt = '&dt=2022-10-28'
+dt = '&dt=2022-04-12'
 
 function realTimeUV(){
     return api.get(`/uv?${lat}&${lng}${dt}`)

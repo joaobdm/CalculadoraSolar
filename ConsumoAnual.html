@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Calculadora Solar</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="index.css">
+
+<!--Graficos-->
+<script>
+
+//grafico comparação
+  window.onload = function () {
+  
+  var chart = new CanvasJS.Chart("chartContainer1", {
+    theme:"light2",
+    animationEnabled: true,
+    title:{
+      text: "Consumo Anual Com/Sem Placa"
+    },
+    axisY :{
+      title: "KW/H utilizados",
+      suffix: "kw/h"
+    },
+    toolTip: {
+      shared: "true"
+    },
+    legend:{
+      cursor:"pointer",
+      itemclick : toggleDataSeries
+    },
+    data: [{
+      type: "spline",
+      visible: true,
+      showInLegend: true,
+      yValueFormatString: "##.00kw",
+      name: "Depois da Placa",
+      dataPoints: [
+        { label: "Janeiro", y: 2.22 },
+        { label: "Fevereiro", y: 2.20 },
+        { label: "Março", y: 2.44 },
+        { label: "Abril", y: 3.45 },
+        { label: "Maio", y: 2.58 },
+        { label: "Junho", y: 4.44 }
+      ]
+    },
+    {
+      type: "spline", 
+      showInLegend: true,
+      yValueFormatString: "##.00kw",
+      name: "Antes da Placa",
+      dataPoints: [
+      { label: "Janeiro", y: 8.22 },
+        { label: "Fevereiro", y: 3.20 },
+        { label: "Março", y: 7.44 },
+        { label: "Abril", y: 4.45 },
+        { label: "Maio", y: 5.58 },
+        { label: "Junho", y: 7.44 }
+      ]
+    }]
+  });
+  chart.render();
+  
+  function toggleDataSeries(e) {
+    if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible ){
+      e.dataSeries.visible = true;
+    } else {
+      e.dataSeries.visible = false;
+    }
+    chart.render();
+  }
+}
+
+chart.render();
+
+
+  </script>
+
+</head>
+<body>
+
+<!--Cabeçario-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light"> 
+  <div class="container-fluid">   
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-mdb-toggle="collapse"
+      data-mdb-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">    
+      <a class="navbar-brand mt-2 mt-lg-0" href="#">
+        <img
+          src="imagens/logo.png"
+          height="100"
+          alt="MDB Logo"
+          loading="lazy"
+        />
+      </a>    
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 mb-lg-2 mt-lg-8">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">FAQ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="ConsumoAnual.html">Consumo Anual</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="ConsumoMensal.html">Consumo Mensal</a>
+        </li>        
+      </ul>
+     <ul class="teste">
+          <a classe="teste" ></a>
+     </ul>
+    </div>  
+    <div class="d-flex align-items-center">
+      <div class="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul>
+            <a class="nav-link" href="#" >Sair</a>         
+        </ul>
+      </div>          
+    </div>
+  </div>
+</nav>
+<br><br>
+<!--Fim cabeçario-->
+
+<!--Grafico incial-->
+<div id="chartContainer1" style="height: 370px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  
+
+<!--Grafico economial anual-->
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+</body>
+</html>
