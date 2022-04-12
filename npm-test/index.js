@@ -35,13 +35,17 @@ function UVforecast() {
 }
 
 async function app () {
+    let mediaIncidencia = 0
     const uvForecast = await UVforecast()
     console.log('Cidade: Belo Horizonte\n')
     uvForecast.result.forEach(element => {
         indiceUV = element.uv
+        mediaIncidencia += element.uv
         dataHora = new Date(element.uv_time)        
         console.log(`Índice UV: ${indiceUV.toFixed(4)}\tData e Hora: ${dataHora.toLocaleString()}`)
     });
+    mediaIncidencia = mediaIncidencia/24
+    console.log(`Média de incidência solar: ${mediaIncidencia}`)
 
     // const rtUV = await realTimeUV()
     // console.log(rtUV)
