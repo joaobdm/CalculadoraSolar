@@ -1,6 +1,6 @@
 const axios = require('axios')
-const apiKey = '8ebe07e8374307d94841f37a4361b28d'
-//const apiKey = '9b42b95b299741645f1c1db83e39d1da'
+//const apiKey = '8ebe07e8374307d94841f37a4361b28d'
+const apiKey = '9b42b95b299741645f1c1db83e39d1da'
 
 const api = axios.create({
     baseURL: 'https://api.openuv.io/api/v1',
@@ -12,7 +12,7 @@ const api = axios.create({
 const lat = 'lat=-19.56398'
 const lng = 'lng=-43.56290'
 let dt = ''
-dt = '&dt=2022-04-12'
+dt = '&dt=2022-01-12'
 
 function realTimeUV(){
     return api.get(`/uv?${lat}&${lng}${dt}`)
@@ -24,7 +24,8 @@ function realTimeUV(){
     })
 }
 
-function UVforecast() {
+function UVforecast(day,month) {
+    dt=`&dt=2022-${month}-${day}`
     return api.get(`/forecast?${lat}&${lng}${dt}`)
     .then(res => {
         return res.data
@@ -35,17 +36,30 @@ function UVforecast() {
 }
 
 async function app () {
-    let mediaIncidencia = 0
-    const uvForecast = await UVforecast()
-    console.log('Cidade: Belo Horizonte\n')
-    uvForecast.result.forEach(element => {
-        indiceUV = element.uv
-        mediaIncidencia += element.uv
-        dataHora = new Date(element.uv_time)        
-        console.log(`Índice UV: ${indiceUV.toFixed(4)}\tData e Hora: ${dataHora.toLocaleString()}`)
-    });
-    mediaIncidencia = mediaIncidencia/24
-    console.log(`Média de incidência solar: ${mediaIncidencia}`)
+    let day = 3
+    let month = 6
+    console.log('UV,Data,Hora')
+    for (let index = 0; index < 19; index++) {
+
+        let mediaIncidencia = 0
+        const uvForecast = await UVforecast(day,month)
+        //console.log('Cidade: Belo Horizonte\n')
+    
+        uvForecast.result.forEach(element => {
+            indiceUV = element.uv
+            mediaIncidencia += element.uv
+            dataHora = new Date(element.uv_time)        
+            console.log(`${indiceUV.toFixed(4)},${dataHora.toLocaleString()}`)
+        });
+        mediaIncidencia = mediaIncidencia/24
+        //console.log(`Média de incidência solar: ${mediaIncidencia}`)
+        day++
+        if(day == 32){
+            day = 2
+            month++
+        }        
+    }
+
 
     // const rtUV = await realTimeUV()
     // console.log(rtUV)
