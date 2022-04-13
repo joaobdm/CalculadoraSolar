@@ -1,6 +1,8 @@
 const axios = require('axios')
 //const apiKey = '8ebe07e8374307d94841f37a4361b28d'
-const apiKey = '9b42b95b299741645f1c1db83e39d1da'
+//const apiKey = '9b42b95b299741645f1c1db83e39d1da'
+//const apiKey = '163ff004dcb77136a8d81c460ac5f9f6'
+const apiKey = '4a7e9f1897629886fac81cd3309d2ad8'
 
 const api = axios.create({
     baseURL: 'https://api.openuv.io/api/v1',
@@ -36,10 +38,10 @@ function UVforecast(day,month) {
 }
 
 async function app () {
-    let day = 3
-    let month = 6
+    let day = 12
+    let month = 8
     console.log('UV,Data,Hora')
-    for (let index = 0; index < 19; index++) {
+    for (let index = 0; index < 50; index++) {
 
         let mediaIncidencia = 0
         const uvForecast = await UVforecast(day,month)
