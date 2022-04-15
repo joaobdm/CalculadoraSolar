@@ -21,14 +21,14 @@
     },
     axisY :{
       title: "KW/H utilizados",
-      suffix: "kw/h"
+      suffix: "KW/H"
     },
     toolTip: {
       shared: "true"
     },
     legend:{
       cursor:"pointer",
-      itemclick : toggleDataSeries
+      itemClick : toggleDataSeries
     },
     data: [{
       type: "spline",
@@ -37,12 +37,18 @@
       yValueFormatString: "##.00kw",
       name: "Depois da Placa",
       dataPoints: [
-        { label: "Janeiro", y: 2.22 },
-        { label: "Fevereiro", y: 2.20 },
-        { label: "Março", y: 2.44 },
-        { label: "Abril", y: 3.45 },
-        { label: "Maio", y: 2.58 },
-        { label: "Junho", y: 4.44 }
+        { label: "Janeiro", y: 75.5 },
+        { label: "Fevereiro", y: 89.5 },
+        { label: "Março", y: 21.8 },
+        { label: "Abril", y: 49.4 },
+        { label: "Maio", y: 45.8 },
+        { label: "Junho", y: 98.8 },
+        { label: "Julho", y: 22.8 },
+        { label: "Agosto", y: 51.4 },
+        { label: "Setembro", y: 47.8 },
+        { label: "Outubro", y: 78.8 },
+        { label: "Novembro", y: 47.8 },
+        { label: "Dezembro", y: 88.8 }
       ]
     },
     {
@@ -51,12 +57,18 @@
       yValueFormatString: "##.00kw",
       name: "Antes da Placa",
       dataPoints: [
-      { label: "Janeiro", y: 8.22 },
-        { label: "Fevereiro", y: 3.20 },
-        { label: "Março", y: 7.44 },
-        { label: "Abril", y: 4.45 },
-        { label: "Maio", y: 5.58 },
-        { label: "Junho", y: 7.44 }
+       { label: "Janeiro", y: 200 },
+        { label: "Fevereiro", y: 170.4 },
+        { label: "Março", y: 125.4 },
+        { label: "Abril", y: 64.6 },
+        { label: "Maio", y: 128.9 },
+        { label: "Junho", y: 184.3 },
+        { label: "Julho", y: 22.8 },
+        { label: "Agosto", y: 51.4 },
+        { label: "Setembro", y: 47.8 },
+        { label: "Outubro", y: 88.8 },
+        { label: "Novembro", y: 37.8 },
+        { label: "Dezembro", y: 108.8 }
       ]
     }]
   });
@@ -68,7 +80,7 @@
     } else {
       e.dataSeries.visible = false;
     }
-    chart.render();
+   chart.render();
   }
 }
 
@@ -80,6 +92,12 @@ chart.render();
 </head>
 <body>
 
+  <style>
+    html,body{
+      height: 100%;
+      overflow: hidden
+    }
+  </style>
 <!--Cabeçario-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light"> 
   <div class="container-fluid">   
@@ -104,13 +122,19 @@ chart.render();
       </a>    
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 mb-lg-2 mt-lg-8">
         <li class="nav-item">
-          <a class="nav-link" href="index.html">FAQ</a>
+          <a class="nav-link" href="index.html">Inicio</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="ConsumoAnual.html">Consumo Anual</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="ConsumoMensal.html">Consumo Mensal</a>
+        </li>      
+        <li class="nav-item">
+          <a class="nav-link" href="Previsão.html">Previsão</a>
+        </li>       
+        <li class="nav-item">
+          <a class="nav-link" href="FAQ.html">FAQ</a>
         </li>        
       </ul>
      <ul class="teste">
@@ -129,14 +153,13 @@ chart.render();
 <br><br>
 <!--Fim cabeçario-->
 
+
+
 <!--Grafico incial-->
 <div id="chartContainer1" style="height: 370px; width: 100%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
   
 
-<!--Grafico economial anual-->
-<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 </body>
 </html>
