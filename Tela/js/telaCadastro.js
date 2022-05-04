@@ -49,7 +49,7 @@ $( document ).ready(function() {
 */
 function set_sex_img() {
     var sex = $("#input_sex").val();
-    if (sex == "Mr.") {
+    if (sex == "Sr.") {
         // male
         $("#img_sex").attr("src", male_img);
     } else {
@@ -69,7 +69,7 @@ function set_who_message() {
     if (validation_name(first_name).code == 0 || 
         validation_name(last_name).code == 0) {
         // Informations not completed
-        $("#who_message").html("Who are you ?");
+        $("#who_message").html("Quem é você?");
     } else {
         // Informations completed
         $("#who_message").html(sex+" "+first_name+" "+last_name);
@@ -82,11 +82,11 @@ function set_who_message() {
 function validation_name (val) {
     if (val.length < 2) {
         // is not valid : name length
-        return {"code":0, "message":"The name is too short."};
+        return {"code":0, "message":"O nome é muito curto."};
     }
     if (!val.match("^[a-zA-Z\- ]+$")) {
         // is not valid : bad character
-        return {"code":0, "message":"The name use non-alphabetics chars."};
+        return {"code":0, "message":"O nome contém caracteres não alfanuméricos"};
     }
     
     // is valid

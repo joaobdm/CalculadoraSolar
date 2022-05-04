@@ -1,7 +1,7 @@
 class Consumo{
-    constructor (potenciaPlaca, consumoMesAnterior, numeroPlacas,incidenciaSolar) {
+    constructor (potenciaPlaca, consumoMesAnterior, numeroPlacas) {
         this.tarifaKWh = 0.92065
-        this.incidenciaSolar = incidenciaSolar
+        this.incidenciaSolar = 12
         this.potenciaPlaca = potenciaPlaca
         this.consumoMesAnterior = consumoMesAnterior
         this.numeroPlacas = numeroPlacas
@@ -12,7 +12,6 @@ class Consumo{
     }
 
     preco() {
-        console.log('KW/h gerado no dia: '+this.producao(30))
         let calculo = (this.consumoMesAnterior - this.producao(30))*this.tarifaKWh
         let calculo2 = Math.round((calculo + Number.EPSILON) * 100) / 100
         if(calculo2 > 0){
@@ -25,5 +24,5 @@ class Consumo{
     }
 }
 
-relogio = new Consumo(100, 200, 5, 2.47367)
+relogio = new Consumo(100, 200, 10)
 console.log(relogio.preco())
