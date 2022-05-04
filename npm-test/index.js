@@ -1,51 +1,85 @@
 const axios = require('axios')
-const apiKey = '8ebe07e8374307d94841f37a4361b28d'
-//const apiKey = '9b42b95b299741645f1c1db83e39d1da'
-
+let apiList = new Array('8ebe07e8374307d94841f37a4361b28d', '9b42b95b299741645f1c1db83e39d1da', '163ff004dcb77136a8d81c460ac5f9f6', '4a7e9f1897629886fac81cd3309d2ad8')
+let apiKey = apiList[apiList.length - 1]
+const _31days = new Array(1, 3, 5, 7, 8, 10, 12)
 const api = axios.create({
     baseURL: 'https://api.openuv.io/api/v1',
     headers: {
-        'x-access-token' : apiKey,
+        'x-access-token': apiKey,
     }
 })
 
 const lat = 'lat=-19.56398'
 const lng = 'lng=-43.56290'
 let dt = ''
-dt = '&dt=2022-04-12'
+dt = '&dt=2022-01-12'
 
-function realTimeUV(){
+function realTimeUV() {
     return api.get(`/uv?${lat}&${lng}${dt}`)
-    .then(res => {
-        return res.data
-    })
-    .catch(err => {
-        return err
-    })
-}
-
-function UVforecast() {
-    return api.get(`/forecast?${lat}&${lng}${dt}`)
-    .then(res => {
-        return res.data
+        .then(res => {
+            return res.data
         })
-    .catch(err => {
-        return err
-    } )
+        .catch(err => {
+            return err
+        })
 }
 
-async function app () {
-    const uvForecast = await UVforecast()
-    console.log('Cidade: Belo Horizonte\n')
-    uvForecast.result.forEach(element => {
-        indiceUV = element.uv
-        dataHora = new Date(element.uv_time)        
-        console.log(`Índice UV: ${indiceUV.toFixed(4)}\tData e Hora: ${dataHora.toLocaleString()}`)
-    });
+function UVforecast(day, month) {
+    dt = `&dt=2022-${month}-${day}`
+    return api.get(`/forecast?${lat}&${lng}${dt}`)
+        .then(res => {
+            return res.data
+        })
+        .catch(err => {
+            return err
+        })
+}
+
+async function app() {
+    let day = 12
+    let month = 8
+    console.log('UV,Data,Hora')
+    for (let index = 0; index < 50; index++) {
+        if (index == 50 || (index > 50 && index % 50 == 0)) {
+            apiList.pop();
+            apiKey = apiList[apiList.length - 1]
+        }
+        let mediaIncidencia = 0
+        const uvForecast = await UVforecast(day, month)
+        //console.log('Cidade: Belo Horizonte\n')
+
+        uvForecast.result.forEach(element => {
+            indiceUV = element.uv
+            mediaIncidencia += element.uv
+            dataHora = new Date(element.uv_time)
+            console.log(`${indiceUV.toFixed(4)},${dataHora.toLocaleString()}`)
+        });
+        mediaIncidencia = mediaIncidencia / 24
+        //console.log(`Média de incidência solar: ${mediaIncidencia}`)
+        day++
+        if (month != 2) {
+            if (day == 32 && _31days.includes(month)) {
+                day = 2
+                month++
+            }
+            else if (day == 33 && !_31days.includes(month)) {
+                day = 2
+                month++
+            }
+        }
+        else {
+            if (day == 30) {
+                day = 2
+                month++
+            }
+        }
+    }
+
 
     // const rtUV = await realTimeUV()
     // console.log(rtUV)
 }
 
-app()
+// app()
 
+console.log(apiList.length)
