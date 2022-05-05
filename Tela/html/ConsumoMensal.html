@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%; overflow: hidden">
+<head>
+  <title>Calculadora Solar</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="index.css">
+
+  <script>
+    window.onload = function() {
+    
+    var chart = new CanvasJS.Chart("chartContainer", {
+        animationEnabled: true, 
+        title: {
+            text: "Uso com a Placa"
+        },
+        data: [{
+            type: "pie",
+            startAngle: 240,
+            yValueFormatString: "##0.00\"%\"",
+            indexLabel: "{label} {y}",
+            dataPoints: [
+                {y: 75.5, label: "Janeiro"},
+                {y: 89.5, label: "Fevereiro"},
+                {y: 21.8, label: "Março"},
+                {y: 49.4, label: "Abril"},
+                {y: 45.8, label: "Maio"},
+                {y: 98.8, label: "Junho"},
+                {y: 22.8, label: "Julho"},
+                {y: 54.4, label: "Agosto"},
+                {y: 47.8, label: "Setembro"},
+                {y: 78.8, label: "Outubro"},
+                {y: 78.8, label: "Novembro"},
+                {y: 87.5, label: "Dezembro"}
+            ]
+        }]
+    });
+      chart.render();
+    }
+
+    
+    </script>
+
+
+</head>
+<body>
+<!--Cabeçario-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light"> 
+    <div class="container-fluid">   
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">    
+        <a class="navbar-brand mt-2 mt-lg-0" href="#">
+          <img
+            src="/imagens/Logo.png"
+            height="100"
+            alt="MDB Logo"
+            loading="lazy"
+          />
+        </a>    
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 mb-lg-2 mt-lg-8">
+          <li class="nav-item">
+            <a class="nav-link" href="/Tela/html/index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Tela/html/ConsumoAnual.html">Consumo Anual</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Tela/html/ConsumoMensal.html">Consumo Mensal</a>
+          </li>      
+          <li class="nav-item">
+            <a class="nav-link" href="/Tela/html/Previsão.html">Previsão</a>
+          </li>   
+          <li class="nav-item">
+            <a class="nav-link" href="/Tela/html/FAQ.html">FAQ</a>
+          </li>        
+        </ul>
+       <ul class="teste">
+            <a classe="teste" ></a>
+       </ul>
+      </div>  
+      <div class="d-flex align-items-center">
+        <div class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul>
+              <a class="nav-link" href="/Tela/html/TelaLogin.html" >Sair</a>         
+          </ul>
+        </div>          
+      </div>
+    </div>
+  </nav>
+  <br><br>
+  <!--Fim cabeçario-->
+
+
+
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+<div id="chartContainer2" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>
