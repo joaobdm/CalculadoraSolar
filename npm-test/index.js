@@ -1,5 +1,5 @@
 const axios = require('axios')
-let apiList = new Array('8ebe07e8374307d94841f37a4361b28d', '9b42b95b299741645f1c1db83e39d1da', '163ff004dcb77136a8d81c460ac5f9f6', '4a7e9f1897629886fac81cd3309d2ad8')
+let apiList = new Array('8ebe07e8374307d94841f37a4361b28d', '9b42b95b299741645f1c1db83e39d1da', '163ff004dcb77136a8d81c460ac5f9f6')//, '4a7e9f1897629886fac81cd3309d2ad8')
 let apiKey = apiList[apiList.length - 1]
 const _31days = new Array(1, 3, 5, 7, 8, 10, 12)
 const api = axios.create({
@@ -31,38 +31,43 @@ function UVforecast(day, month) {
             return res.data
         })
         .catch(err => {
+            console.log(err.response.data)
             return err
         })
 }
 
 async function app() {
-    let day = 12
-    let month = 8
+    console.log(new Date().toLocaleString('pt-br'))
+    let day = 21
+    let month = 2
     console.log('UV,Data,Hora')
-    for (let index = 0; index < 50; index++) {
+    // console.log(apiKey)
+    for (let index = 0; index < 199; index++) {
         if (index == 50 || (index > 50 && index % 50 == 0)) {
             apiList.pop();
             apiKey = apiList[apiList.length - 1]
+            // console.log(apiKey)
         }
-        let mediaIncidencia = 0
+        // let mediaIncidencia = 0
         const uvForecast = await UVforecast(day, month)
         //console.log('Cidade: Belo Horizonte\n')
 
         uvForecast.result.forEach(element => {
             indiceUV = element.uv
-            mediaIncidencia += element.uv
+            // mediaIncidencia += element.uv
             dataHora = new Date(element.uv_time)
-            console.log(`${indiceUV.toFixed(4)},${dataHora.toLocaleString()}`)
+            console.log(`${indiceUV.toFixed(4)},${dataHora.toLocaleString('pt-br')}`)
         });
-        mediaIncidencia = mediaIncidencia / 24
+        // mediaIncidencia = mediaIncidencia / 24
         //console.log(`Média de incidência solar: ${mediaIncidencia}`)
+        // console.log(`${day}/${month}`)
         day++
         if (month != 2) {
-            if (day == 32 && _31days.includes(month)) {
+            if (day == 32 && !_31days.includes(month)) {
                 day = 2
                 month++
             }
-            else if (day == 33 && !_31days.includes(month)) {
+            else if (day == 33 && _31days.includes(month)) {
                 day = 2
                 month++
             }
@@ -74,12 +79,6 @@ async function app() {
             }
         }
     }
-
-
-    // const rtUV = await realTimeUV()
-    // console.log(rtUV)
 }
 
-// app()
-
-console.log(apiList.length)
+app()
