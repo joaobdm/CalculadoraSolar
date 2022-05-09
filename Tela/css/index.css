@@ -1,9 +1,7 @@
-
-
 h1{
     font-size: 38px;
     font-style: Optima;
-    color: 	#228B22;
+    color: 	#00bb2d;
     text-align: center;
     margin-left: 15%;
     margin-right: 15%;
@@ -14,17 +12,18 @@ h2{
     font-style: Optima;
     color: #363636;
     text-align: height;
-    margin-left: 20px;
     margin-left: 15%;
     margin-right: 15%;
 
+}
+b{
+    color:#00bb2d
 }
 .func{
     font-size: 18px;
     font-style: Optima;
     color: #363636;
     display: inline-block;
-    margin-left: 20px;
     margin-left: 15%;
     margin-right: 15%;
 }
@@ -35,3 +34,15 @@ h2{
     display: inline-block;
 }
 
+.container-fluid{
+    background: #228B22
+}
+#links {
+    color: white;
+}
+body{
+    background:whitesmoke
+}
+head{
+    background:whitesmoke
+}
