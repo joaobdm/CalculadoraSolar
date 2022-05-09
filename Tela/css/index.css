@@ -1,3 +1,9 @@
+body{
+  background:whitesmoke
+}
+head{
+  background:whitesmoke
+}
 h1{
     font-size: 38px;
     font-style: Optima;
@@ -32,6 +38,13 @@ h2{
     height: 400px;
     text-align: justify;
 }
+.container-fluid{
+  background: #228B22
+}
+#links {
+  color: white;
+}
+
 
 footer {
     text-align: center;
