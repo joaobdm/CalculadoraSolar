@@ -1,5 +1,5 @@
 const axios = require('axios')
-let apiList = new Array('8ebe07e8374307d94841f37a4361b28d', '9b42b95b299741645f1c1db83e39d1da', '163ff004dcb77136a8d81c460ac5f9f6')//, '4a7e9f1897629886fac81cd3309d2ad8')
+let apiList = new Array('8ebe07e8374307d94841f37a4361b28d', '9b42b95b299741645f1c1db83e39d1da', '163ff004dcb77136a8d81c460ac5f9f6', '4a7e9f1897629886fac81cd3309d2ad8')
 let apiKey = apiList[apiList.length - 1]
 const _31days = new Array(1, 3, 5, 7, 8, 10, 12)
 const api = axios.create({
@@ -38,8 +38,8 @@ function UVforecast(day, month) {
 
 async function app() {
     console.log(new Date().toLocaleString('pt-br'))
-    let day = 21
-    let month = 2
+    let day = 29
+    let month = 3
     console.log('UV,Data,Hora')
     // console.log(apiKey)
     for (let index = 0; index < 199; index++) {
@@ -49,6 +49,7 @@ async function app() {
             // console.log(apiKey)
         }
         // let mediaIncidencia = 0
+        console.log('DAY: '+day)
         const uvForecast = await UVforecast(day, month)
         //console.log('Cidade: Belo Horizonte\n')
 
@@ -63,18 +64,18 @@ async function app() {
         // console.log(`${day}/${month}`)
         day++
         if (month != 2) {
-            if (day == 32 && !_31days.includes(month)) {
-                day = 2
+            if (day == 31 && !_31days.includes(month)) {
+                day = 1
                 month++
             }
-            else if (day == 33 && _31days.includes(month)) {
-                day = 2
+            else if (day == 32 && _31days.includes(month)) {
+                day = 1
                 month++
             }
         }
         else {
-            if (day == 30) {
-                day = 2
+            if (day == 29) {
+                day = 1
                 month++
             }
         }
