@@ -82,4 +82,9 @@ async function app() {
     }
 }
 
-app()
+async function app2() {
+    const resp = await realTimeUV()
+    let date = new Date(resp.result.uv_max_time);
+    console.log(date.toLocaleString('pt-br'))
+}
+app2()
