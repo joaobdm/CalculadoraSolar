@@ -161,3 +161,8 @@ h1.heading {
   font-weight:600;
   text-transform: uppercase
 }
+
+.graph_annual{
+  display: block;
+  margin-left: 50px;
+}
