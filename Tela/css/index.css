@@ -1,3 +1,6 @@
+head{
+  background:whitesmoke
+}
 h1{
     font-size: 38px;
     font-style: Optima;
@@ -15,7 +18,15 @@ h2{
     margin-left: 20px;
     margin-left: 10%;
     margin-right: 10%;
-
+}
+b{
+  color:#00bb2d
+}
+#fim{
+  background-color:#228B22;
+  color:white;
+  margin-left: 1%;
+  margin-right: 1%;
 }
 .func{
     font-size: 18px;
@@ -32,7 +43,13 @@ h2{
     height: 400px;
     text-align: justify;
 }
-
+.container-fluid{
+  background: #228B22;
+  color:white
+}
+#links{
+  color:white
+}
 footer {
     text-align: center;
     padding: 1px;
@@ -41,7 +58,17 @@ footer {
 }
 
 .logo{
-    margin-left: 580%;
+    margin-left: 50%;
+}
+#chartContainer{
+  height: 300px;
+  width: 98%;
+  margin-left: 1%;
+}
+#chartContainer1{
+  height: 370px;
+  width: 98%;
+  margin-left: 1%
 }
 
 .fundo{
@@ -69,7 +96,7 @@ body {
        box-sizing: border-box;
   height: 100%;
   width: 100%; 
-  background: #FFF;
+  background: whitesmoke;
   font-family: 'Roboto', sans-serif;
   font-weight: 400; 
 }
@@ -160,9 +187,4 @@ h1.heading {
   padding:10px;
   font-weight:600;
   text-transform: uppercase
-}
-
-.graph_annual{
-  display: block;
-  margin-left: 50px;
 }
