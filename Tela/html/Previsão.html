@@ -17,7 +17,7 @@
         text: "Previsão"
       },
       axisY: {
-        title: "Medals",
+        title: "Kw/h",
         includeZero: true
       },
       legend: {
@@ -34,13 +34,13 @@
         name: "Economia",
         color: "PaleGreen",
         dataPoints: [
-          { y: 243, label: "Janeiro" },
-          { y: 236, label: "Fevereiro" },
-          { y: 243, label: "Março" },
-          { y: 273, label: "Abril" },
-          { y: 269, label: "Maio" },
-          { y: 196, label: "Junho" },
-          { y: 1118, label: "Julho" }
+          { y: 51, label: "Janeiro" },
+          { y: 56, label: "Fevereiro" },
+          { y: 63, label: "Março" },
+          { y: 80, label: "Abril" },
+          { y: 71, label: "Maio" },
+          { y: 57, label: "Junho" },
+          { y: 68, label: "Julho" }
         ]
       },
       {
@@ -49,13 +49,13 @@
         name: "Gasto",
         color: "MediumAquamarine",
         dataPoints: [
-          { y: 236, label: "Janeiro" },
-          { y: 172, label: "Fevereiro" },
-          { y: 309, label: "Março" },
-          { y: 302, label: "Abril" },
-          { y: 285, label: "Maio" },
-          { y: 188, label: "Junho" },
-          { y: 788, label: "Julho" }
+          { y: 167, label: "Janeiro" },
+          { y: 196, label: "Fevereiro" },
+          { y: 213, label: "Março" },
+          { y: 185, label: "Abril" },
+          { y: 181, label: "Maio" },
+          { y: 221, label: "Junho" },
+          { y: 191, label: "Julho" }
         ]
       }]
     });
@@ -68,11 +68,11 @@
       var str2 ;
       for (var i = 0; i < e.entries.length; i++){
         var str1 = "<span style= \"color:"+e.entries[i].dataSeries.color + "\">" + e.entries[i].dataSeries.name + "</span>: <strong>"+  e.entries[i].dataPoint.y + "</strong> <br/>" ;
-        total = e.entries[i].dataPoint.y + total;
+        total = e.entries[i].dataPoint.y - total;
         str = str.concat(str1);
       }
       str2 = "<strong>" + e.entries[0].dataPoint.label + "</strong> <br/>";
-      str3 = "<span style = \"color:Tomato\">Total: </span><strong>" + total + "</strong><br/>";
+      str3 = "<span style = \"color:Tomato\">Diferença: </span><strong>" + total + "</strong><br/>";
       return (str2.concat(str)).concat(str3);
     }
     
@@ -107,7 +107,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">    
       <a class="navbar-brand mt-2 mt-lg-0" href="#">
         <img
-          src="/imagens/Logo.png"
+          src="/imagens/logo.png"
           height="100"
           alt="MDB Logo"
           loading="lazy"
